@@ -1,43 +1,186 @@
-🇮🇹 Numeri Italiani - Italian Numbers Learning App(KR)
+📱 Numeri Italiani - 이탈리아 숫자 학습 앱 
 
-이탈리아 숫자 학습 앱입니다. 게이미피케이션 요소와 친구 시스템으로 재미있게 학습할 수 있습니다.
+===============================
 
-✨ 주요 기능
+📌 프로젝트 개요
+- 게이미피케이션을 활용한 이탈리아 숫자 학습 웹 앱
+- 모바일 퍼스트 반응형 디자인
+- 한국어/영어 다국어 지원
+- 이탈리아 국기 테마 색상 적용
 
-📚 단계별 학습 (초급/중급/고급)
-🎮 퀴즈 & 카드 매칭 게임
-❤️ 하트 시스템 & XP 게이미피케이션
-🏆 배지 & 별 수집 시스템
-👥 친구 응원 기능
-🌐 다국어 지원 (한국어/영어)
-🎵 이탈리아어 TTS 음성 지원
+===============================
+
+🎮 핵심 기능
+
+[학습 모드]
+• 퀴즈 모드: 4지선다 문제
+• 카드 매칭 게임: 드래그 앤 드롭 
+• 이탈리아어 TTS 음성 지원
+
+[게이미피케이션]
+• 하트 시스템 (실패 3회 제한)
+• XP & 레벨 시스템 (정답당 +10 XP)
+• 연속 학습 스트릭
+• 배지 수집 시스템
+• 별 수집 (레슨별 최대 3개)
+
+[단계별 학습]
+• 초급 (1-10): 처음부터 이용 가능
+• 중급 (11-20): 초급 완료 후 해제
+• 고급 (20-100): 중급 완료 후 해제
+
+[소셜 기능]
+• 친구 코드로 친구 추가
+• 응원 메시지 (하루 1회)
+• 하트/XP 보너스
+
+===============================
 
 🛠️ 기술 스택
 
-React + TypeScript
-Tailwind CSS v4
-Motion (Framer Motion)
-Web Speech API
-ShadCN/UI Components
+[Frontend]
+• React 18 + TypeScript 5
+• Tailwind CSS 4.0
+• Motion (애니메이션)
+• ShadCN/UI (컴포넌트)
+• Lucide React (아이콘)
 
+[도구 & API]
+• Vite (빌드 도구)
+• Web Speech API (TTS)
+• Local Storage (진행상황 저장 예정)
 
+===============================
 
-🇮🇹 Numeri Italiani – Italian Numbers Learning App(EN)
+📂 주요 컴포넌트
 
-An Italian numbers learning app designed to make studying fun with gamification elements and a friend system.
+/components/
+├── GameUI.tsx              # 게임 상단 UI (하트, XP, 스트릭)
+├── QuizScreen.tsx          # 퀴즈 화면
+├── SortingGame.tsx         # 매칭 게임
+├── ResultScreen.tsx        # 결과 화면
+├── FriendSystem.tsx        # 친구 시스템
+├── StarCollection.tsx      # 별 수집 화면
+├── RewardScreen.tsx        # 보상 화면
+├── BottomNavigation.tsx    # 하단 네비게이션
+└── ui/                     # ShadCN UI 기본 컴포넌트
 
-✨ Key Features
-	•	📚 Step-by-step learning (Beginner / Intermediate / Advanced)
-	•	🎮 Quizzes & card matching games
-	•	❤️ Heart system & XP-based gamification
-	•	🏆 Badge & star collection system
-	•	👥 Friend cheering function
-	•	🌐 Multilingual support (Korean / English)
-	•	🎵 Italian TTS voice support
+/data/
+├── lessons.ts              # 레슨 데이터
+└── badges.ts               # 배지 시스템
 
-🛠️ Tech Stack
-	•	React + TypeScript
-	•	Tailwind CSS v4
-	•	Motion (Framer Motion)
-	•	Web Speech API
-	•	ShadCN/UI Components
+===============================
+
+🎨 디자인 시스템
+
+[색상 테마]
+• 메인: 이탈리아 녹색 (#009246)
+• 서브: 이탈리아 빨강 (#CE2B37)  
+• 배경: 흰색 (#FFFFFF)
+
+[타이포그래피]
+• 메인: Pretendard (한글)
+• 헤딩: Freight Big Pro (영문)
+• 장식: Dancing Script (이탈리아어)
+
+[디자인 원칙]
+• Material Design 3.0
+• Flat Design 스타일
+• 물리 기반 자연스러운 애니메이션
+
+===============================
+
+⭐ 점수 시스템
+
+[퀴즈 모드]
+• 정답당 10 XP
+• 전체 정답 시 별 3개
+
+[매칭 게임 등급]
+• 완벽 (금메달): 별 3개, XP 1.5배
+• 우수 (은메달): 별 2개, XP 1.2배
+• 양호 (동메달): 별 1개, XP 1.0배
+• 완료: 별 0개, XP 0.8배
+
+[배지 시스템]
+• 첫 걸음: +50 XP
+• 연속 학습자: +100 XP
+• 완벽주의자: +200 XP
+• 초급 마스터: +300 XP
+• 중급 마스터: +500 XP
+• 고급 마스터: +1000 XP
+
+===============================
+
+🚀 설치 및 실행
+
+필요 조건:
+• Node.js 16.0.0+
+• npm 8.0.0+
+• 모던 웹 브라우저
+
+실행 방법:
+1. git clone https://github.com/your-username/numeri-italiani.git
+2. cd numeri-italiani
+3. npm install
+4. npm run dev
+5. http://localhost:3000 접속
+
+===============================
+
+📱 지원 브라우저
+
+• Chrome 90+ (TTS 지원)
+• Firefox 88+ (TTS 지원)  
+• Safari 14+ (TTS 지원)
+• Edge 90+ (TTS 지원)
+• iOS Safari 14+
+• Android Chrome 90+
+
+===============================
+
+🌟 향후 계획
+
+v1.1 (단기):
+- 로컬 스토리지 진행상황 저장
+- PWA 지원 (오프라인 모드)
+- 추가 배지 및 성능 최적화
+
+v2.0 (중기):
+- Supabase 백엔드 연동
+- 실시간 친구 시스템
+- 추가 학습 컨텐츠
+- 음성 인식 기능
+
+v3.0 (장기):
+- AI 기반 개인화 학습
+- 다언어 확장
+- 네이티브 모바일 앱
+- 글로벌 리더보드
+
+===============================
+
+📞 문의 & 기여
+
+GitHub Issues: 버그 리포트 & 기능 요청
+기여 영역: 버그 수정, 새 기능, 문서 개선, UI/UX 향상
+
+라이센스: MIT License
+
+===============================
+
+💡 자주 묻는 질문
+
+Q: 음성이 나오지 않아요
+A: 브라우저 음성 기능 허용 설정 확인
+
+Q: 친구 코드는 어떻게 생성되나요?  
+A: 현재 목업 데이터, 백엔드 연동 시 자동 생성 예정
+
+Q: 진행상황이 저장되나요?
+A: 현재 세션 저장, v1.1에서 로컬 저장 기능 추가 예정
+
+===============================
+
+Made with ❤️ for Italian language learners
+🇮🇹 Buona fortuna con i numeri italiani! 🇮🇹
