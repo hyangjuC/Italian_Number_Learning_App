@@ -19,24 +19,3 @@ Tailwind CSS v4
 Motion (Framer Motion)
 Web Speech API
 ShadCN/UI Components
-
-
-🇮🇹 Numeri Italiani – Italian Numbers Learning App(EN)
-
-An Italian numbers learning app designed to make studying fun with gamification elements and a friend system.
-
-✨ Key Features
-	•	📚 Step-by-step learning (Beginner / Intermediate / Advanced)
-	•	🎮 Quizzes & card matching games
-	•	❤️ Heart system & XP-based gamification
-	•	🏆 Badge & star collection system
-	•	👥 Friend cheering function
-	•	🌐 Multilingual support (Korean / English)
-	•	🎵 Italian TTS voice support
-
-🛠️ Tech Stack
-	•	React + TypeScript
-	•	Tailwind CSS v4
-	•	Motion (Framer Motion)
-	•	Web Speech API
-	•	ShadCN/UI Components
