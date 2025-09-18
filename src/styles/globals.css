@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Freight+Big+Pro:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-family-heading: 'Freight Big Pro', 'Pretendard', serif;
+  --font-family-script: 'Dancing Script', 'Pretendard', cursive;
+  
+  /* Italian Flag Colors - Main Theme */
+  --italian-green: #009246;
+  --italian-green-light: #00a84f;
+  --italian-green-dark: #007a39;
+  --italian-green-50: #e8f5ed;
+  --italian-green-100: #c8e6d0;
+  --italian-green-200: #a5d6b2;
+  --italian-green-300: #82c694;
+  --italian-green-400: #68ba7f;
+  --italian-green-500: #4dae6b;
+  --italian-green-600: #009246;
+  --italian-green-700: #007a39;
+  --italian-green-800: #00632d;
+  --italian-green-900: #004d22;
+  
+  --italian-red: #CE2B37;
+  --italian-red-light: #d9474f;
+  --italian-red-dark: #b5242e;
+  --italian-red-50: #fdf2f3;
+  --italian-red-100: #fce7e8;
+  --italian-red-200: #f9d2d4;
+  --italian-red-300: #f5a8ac;
+  --italian-red-400: #ee7780;
+  --italian-red-500: #e14855;
+  --italian-red-600: #CE2B37;
+  --italian-red-700: #b5242e;
+  --italian-red-800: #962025;
+  --italian-red-900: #7e1f23;
+  
+  --italian-white: #FFFFFF;
+  --italian-cream: #FEFEFE;
+  --italian-gray-50: #f9fafb;
+  --italian-gray-100: #f3f4f6;
+  --italian-gray-200: #e5e7eb;
+  --italian-gray-300: #d1d5db;
+  --italian-gray-400: #9ca3af;
+  --italian-gray-500: #6b7280;
+  --italian-gray-600: #4b5563;
+  --italian-gray-700: #374151;
+  --italian-gray-800: #1f2937;
+  --italian-gray-900: #111827;
+
+  /* Theme Variables */
+  --background: var(--italian-white);
+  --foreground: var(--italian-gray-900);
+  --card: var(--italian-white);
+  --card-foreground: var(--italian-gray-900);
+  --popover: var(--italian-white);
+  --popover-foreground: var(--italian-gray-900);
+  --primary: var(--italian-green);
+  --primary-foreground: var(--italian-white);
+  --secondary: var(--italian-red);
+  --secondary-foreground: var(--italian-white);
+  --muted: var(--italian-gray-100);
+  --muted-foreground: var(--italian-gray-600);
+  --accent: var(--italian-green-100);
+  --accent-foreground: var(--italian-green-800);
+  --destructive: var(--italian-red);
+  --destructive-foreground: var(--italian-white);
+  --border: var(--italian-gray-200);
+  --input: transparent;
+  --input-background: var(--italian-gray-50);
+  --switch-background: var(--italian-gray-300);
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --ring: var(--italian-green);
+  --chart-1: var(--italian-green);
+  --chart-2: var(--italian-red);
+  --chart-3: var(--italian-gray-600);
+  --chart-4: var(--italian-green-300);
+  --chart-5: var(--italian-red-300);
+  --radius: 0.75rem;
+  --sidebar: var(--italian-gray-50);
+  --sidebar-foreground: var(--italian-gray-900);
+  --sidebar-primary: var(--italian-green);
+  --sidebar-primary-foreground: var(--italian-white);
+  --sidebar-accent: var(--italian-gray-100);
+  --sidebar-accent-foreground: var(--italian-gray-800);
+  --sidebar-border: var(--italian-gray-200);
+  --sidebar-ring: var(--italian-green);
+}
+
+.dark {
+  --background: var(--italian-gray-900);
+  --foreground: var(--italian-white);
+  --card: var(--italian-gray-800);
+  --card-foreground: var(--italian-white);
+  --popover: var(--italian-gray-800);
+  --popover-foreground: var(--italian-white);
+  --primary: var(--italian-green-400);
+  --primary-foreground: var(--italian-gray-900);
+  --secondary: var(--italian-red-400);
+  --secondary-foreground: var(--italian-gray-900);
+  --muted: var(--italian-gray-800);
+  --muted-foreground: var(--italian-gray-400);
+  --accent: var(--italian-gray-700);
+  --accent-foreground: var(--italian-white);
+  --destructive: var(--italian-red-400);
+  --destructive-foreground: var(--italian-gray-900);
+  --border: var(--italian-gray-700);
+  --input: var(--italian-gray-800);
+  --ring: var(--italian-green-400);
+  --chart-1: var(--italian-green-400);
+  --chart-2: var(--italian-red-400);
+  --chart-3: var(--italian-gray-400);
+  --chart-4: var(--italian-green-200);
+  --chart-5: var(--italian-red-200);
+  --sidebar: var(--italian-gray-800);
+  --sidebar-foreground: var(--italian-white);
+  --sidebar-primary: var(--italian-green-400);
+  --sidebar-primary-foreground: var(--italian-gray-900);
+  --sidebar-accent: var(--italian-gray-700);
+  --sidebar-accent-foreground: var(--italian-white);
+  --sidebar-border: var(--italian-gray-700);
+  --sidebar-ring: var(--italian-green-400);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-family);
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+}
+
+/* Flat Design Shadows - Minimal and Clean */
+.shadow-flat-1 {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-flat-2 {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-flat-3 {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-flat-4 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Italian themed gradients */
+.bg-italian-gradient {
+  background: linear-gradient(135deg, var(--italian-green-50) 0%, var(--italian-white) 50%, var(--italian-red-50) 100%);
+}
+
+.bg-italian-primary-gradient {
+  background: linear-gradient(135deg, var(--italian-green) 0%, var(--italian-green-light) 100%);
+}
+
+.bg-italian-secondary-gradient {
+  background: linear-gradient(135deg, var(--italian-red) 0%, var(--italian-red-light) 100%);
+}
+
+/* Pastel Gradient Backgrounds - Flat Design */
+.bg-pastel-gradient {
+  background: linear-gradient(135deg, 
+    #f0f9ff 0%,    /* Light blue */
+    #f3e8ff 25%,   /* Light purple */
+    #ecfdf5 50%,   /* Light green */
+    #fefce8 75%,   /* Light yellow */
+    #fef2f2 100%   /* Light pink */
+  );
+}
+
+.bg-pastel-gradient-2 {
+  background: linear-gradient(120deg, 
+    #e0f2fe 0%,    /* Cyan 50 */
+    #f3e8ff 33%,   /* Purple 100 */
+    #dcfce7 66%,   /* Green 100 */
+    #fefce8 100%   /* Yellow 50 */
+  );
+}
+
+.bg-italian-food-pattern {
+  background: linear-gradient(135deg, 
+    #f0fdf4 0%,    /* Green 50 */
+    #f8fafc 25%,   /* Slate 50 */
+    #fef7ff 50%,   /* Fuchsia 50 */
+    #fffbeb 75%,   /* Amber 50 */
+    #fef2f2 100%   /* Red 50 */
+  );
+}
+
+/* Elegant Script Headers */
+.italian-script {
+  font-family: var(--font-family-script);
+}
+
+.italian-elegant {
+  font-family: var(--font-family-heading);
+}
