@@ -15,14 +15,36 @@ interface Question {
   correct: string;
 }
 
+type Language = "KR" | "EN";
+
 interface QuizScreenProps {
   questions: Question[];
   onComplete: (score: number, totalQuestions: number) => void;
   onHeartLost: () => void;
   onHome?: () => void;
+  language: Language;
 }
 
-export function QuizScreen({ questions, onComplete, onHeartLost, onHome }: QuizScreenProps) {
+const quizContent = {
+  KR: {
+    question: "문제",
+    nextNumber: "다음 숫자는?",
+    bonusRound: "보너스 라운드!",
+    bonusText: "퀴즈를 완료했어요! 이제 카드 매칭으로 복습해보세요",
+    tryAgain: "Ops! 다시 해보세요",
+    tryAgainText: "괜찮아요, 다시 도전! 💪"
+  },
+  EN: {
+    question: "Question",
+    nextNumber: "What number is this?",
+    bonusRound: "Bonus Round!",
+    bonusText: "Quiz completed! Now let's review with card matching",
+    tryAgain: "Ops! Try again",
+    tryAgainText: "That's okay, try again! 💪"
+  }
+};
+
+export function QuizScreen({ questions, onComplete, onHeartLost, onHome, language }: QuizScreenProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -123,6 +145,7 @@ export function QuizScreen({ questions, onComplete, onHeartLost, onHome }: QuizS
           onComplete={handleBonusComplete}
           onHeartLost={onHeartLost}
           onHome={onHome}
+          disableSound={true}
         />
       </div>
     );
@@ -134,7 +157,7 @@ export function QuizScreen({ questions, onComplete, onHeartLost, onHome }: QuizS
         {/* Progress */}
         <div className="space-y-3">
           <div className="flex justify-between text-sm font-semibold text-[var(--italian-gray-700)]">
-            <span>문제 {currentQuestion + 1}/{totalQuestions}</span>
+            <span>{quizContent[language].question} {currentQuestion + 1}/{totalQuestions}</span>
             <span>{Math.round(progress)}%</span>
           </div>
           <Progress value={progress} className="h-3 bg-[var(--italian-gray-200)]" />
@@ -148,7 +171,7 @@ export function QuizScreen({ questions, onComplete, onHeartLost, onHome }: QuizS
           className="text-center space-y-8"
         >
           <div className="bg-white rounded-3xl p-8 shadow-flat-2 border border-[var(--italian-gray-100)]">
-            <h2 className="text-3xl font-bold mb-4 text-[var(--italian-gray-900)]">다음 숫자는?</h2>
+            <h2 className="text-3xl font-bold mb-4 text-[var(--italian-gray-900)]">{quizContent[language].nextNumber}</h2>
             <div className="relative">
               <div className="text-7xl font-bold text-[var(--italian-green)] mb-8">
                 {question.number}

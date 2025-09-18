@@ -17,6 +17,7 @@ interface MatchingGameProps {
   onComplete: (score: number, totalQuestions: number) => void;
   onHeartLost: () => void;
   onHome?: () => void;
+  disableSound?: boolean;
 }
 
 interface Card {
@@ -26,7 +27,7 @@ interface Card {
   pairId: string;
 }
 
-export function MatchingGame({ pairs, onComplete, onHeartLost, onHome }: MatchingGameProps) {
+export function MatchingGame({ pairs, onComplete, onHeartLost, onHome, disableSound = false }: MatchingGameProps) {
   const [cards, setCards] = useState<Card[]>([]);
   const [flippedCards, setFlippedCards] = useState<string[]>([]);
   const [matchedPairs, setMatchedPairs] = useState<string[]>([]);
@@ -218,8 +219,8 @@ export function MatchingGame({ pairs, onComplete, onHeartLost, onHome }: Matchin
                       }`}>
                         {card.value}
                       </div>
-                      {/* Speech button for cards - only show when card is visible */}
-                      {shouldShowFront && !isMatched && (
+                      {/* Speech button for cards - only show when card is visible and sound is enabled */}
+                      {shouldShowFront && !isMatched && !disableSound && (
                         <div className="absolute -top-1 -right-1" onClick={(e) => e.stopPropagation()}>
                           <SpeechButton 
                             text={card.value.toString()} 

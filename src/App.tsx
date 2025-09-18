@@ -15,6 +15,20 @@ import { Button } from "./components/ui/button";
 import { lessons, generateQuizQuestions, generateMatchingPairs } from "./data/lessons";
 import { badges, UserBadge, checkBadgeEarned } from "./data/badges";
 
+// 다국어 텍스트
+const appContent = {
+  KR: {
+    homeTitle: "Numeri Italiani",
+    homeSubtitle: "이탈리아 숫자를 배워보세요!",
+    levelLabel: "이탈리아 숫자"
+  },
+  EN: {
+    homeTitle: "Numeri Italiani", 
+    homeSubtitle: "Learn Italian Numbers!",
+    levelLabel: "Italian Numbers"
+  }
+};
+
 // 시도 횟수에 따른 등급 계산 함수
 function calculateGrade(score: number, totalQuestions: number, attempts: number) {
   const perfectAttempts = totalQuestions; // 완벽한 시도 횟수 (각 문제당 1번)
@@ -49,6 +63,7 @@ function calculateGrade(score: number, totalQuestions: number, attempts: number)
 }
 
 type Screen = "intro" | "home" | "lesson" | "result" | "friends" | "stars" | "rewards";
+type Language = "KR" | "EN";
 
 interface GameState {
   hearts: number;
@@ -88,6 +103,7 @@ interface EncouragementMessage {
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>("intro");
   const [currentLessonId, setCurrentLessonId] = useState<string | null>(null);
+  const [language, setLanguage] = useState<Language>("KR");
   const [gameState, setGameState] = useState<GameState>({
     hearts: 3,
     maxHearts: 3,
@@ -97,30 +113,7 @@ export default function App() {
     earnedBadges: [],
   });
 
-  // Google Analytics 4 설정
-  useEffect(() => {
-    // gtag.js 스크립트 로드
-    const script1 = document.createElement('script');
-    script1.async = true;
-    script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-M4SGBQV7H3';
-    document.head.appendChild(script1);
 
-    // gtag 설정 스크립트
-    const script2 = document.createElement('script');
-    script2.innerHTML = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-M4SGBQV7H3');
-    `;
-    document.head.appendChild(script2);
-
-    return () => {
-      // 클린업: 스크립트 제거
-      document.head.removeChild(script1);
-      document.head.removeChild(script2);
-    };
-  }, []);
 
   // Mock friends data
   const [friends, setFriends] = useState<Friend[]>([
@@ -162,7 +155,7 @@ export default function App() {
     {
       id: "3",
       friendName: "루카",
-      message: "같이 열심히 해보자! Andiamo! 🚀",
+      message: "같이 열심��� 해보자! Andiamo! 🚀",
       timestamp: "어제",
       emoji: "🔥"
     }
@@ -173,6 +166,10 @@ export default function App() {
 
   const handleStartApp = () => {
     setCurrentScreen("home");
+  };
+
+  const handleLanguageChange = (newLanguage: Language) => {
+    setLanguage(newLanguage);
   };
 
   const handleBottomNavChange = (screen: "home" | "friends" | "stars" | "rewards") => {
@@ -330,7 +327,7 @@ export default function App() {
 
   // Intro Screen
   if (currentScreen === "intro") {
-    return <IntroScreen onStart={handleStartApp} />;
+    return <IntroScreen onStart={handleStartApp} onLanguageChange={handleLanguageChange} />;
   }
 
   // Home Screen
@@ -342,7 +339,7 @@ export default function App() {
           maxHearts={gameState.maxHearts}
           xp={gameState.xp}
           streak={gameState.streak}
-          level="이탈리아 숫자"
+          level={appContent[language].levelLabel}
         />
 
         <div className="p-4 space-y-6">
@@ -355,9 +352,9 @@ export default function App() {
             >
               <div className="text-5xl">🇮🇹</div>
               <h1 className="text-3xl font-bold text-[var(--italian-gray-900)] italian-elegant">
-                Numeri Italiani
+                {appContent[language].homeTitle}
               </h1>
-              <p className="text-lg text-[var(--italian-gray-600)] font-medium">이탈리아 숫자를 배워보세요!</p>
+              <p className="text-lg text-[var(--italian-gray-600)] font-medium">{appContent[language].homeSubtitle}</p>
             </motion.div>
           </div>
 
@@ -379,6 +376,7 @@ export default function App() {
                   maxStars={3}
                   gameType={lesson.type}
                   onClick={() => handleLessonStart(lesson.id)}
+                  language={language}
                 />
               </motion.div>
             ))}
@@ -388,7 +386,8 @@ export default function App() {
         {/* Bottom Navigation */}
         <BottomNavigation 
           currentScreen={currentScreen} 
-          onScreenChange={handleBottomNavChange} 
+          onScreenChange={handleBottomNavChange}
+          language={language}
         />
       </div>
     );
@@ -412,6 +411,7 @@ export default function App() {
             onComplete={(score, total) => handleLessonComplete(score, total)}
             onHeartLost={handleHeartLost}
             onHome={() => setCurrentScreen("home")}
+            language={language}
           />
         </div>
       );
@@ -431,6 +431,7 @@ export default function App() {
             onComplete={(score, total, attempts) => handleLessonComplete(score, total, attempts)}
             onHeartLost={handleHeartLost}
             onHome={() => setCurrentScreen("home")}
+            language={language}
           />
         </div>
       );
@@ -455,6 +456,7 @@ export default function App() {
         onHome={() => setCurrentScreen("home")}
         onNextLesson={hasNextLesson ? handleNextLesson : undefined}
         hasNextLesson={hasNextLesson}
+        language={language}
       />
     );
   }
@@ -474,10 +476,12 @@ export default function App() {
           maxHearts={gameState.maxHearts}
           xp={gameState.xp}
           streak={gameState.streak}
+          language={language}
         />
         <BottomNavigation 
           currentScreen={currentScreen} 
-          onScreenChange={handleBottomNavChange} 
+          onScreenChange={handleBottomNavChange}
+          language={language}
         />
       </div>
     );
@@ -496,10 +500,12 @@ export default function App() {
           maxHearts={gameState.maxHearts}
           xp={gameState.xp}
           streak={gameState.streak}
+          language={language}
         />
         <BottomNavigation 
           currentScreen={currentScreen} 
-          onScreenChange={handleBottomNavChange} 
+          onScreenChange={handleBottomNavChange}
+          language={language}
         />
       </div>
     );
@@ -518,10 +524,12 @@ export default function App() {
           hearts={gameState.hearts}
           maxHearts={gameState.maxHearts}
           streak={gameState.streak}
+          language={language}
         />
         <BottomNavigation 
           currentScreen={currentScreen} 
-          onScreenChange={handleBottomNavChange} 
+          onScreenChange={handleBottomNavChange}
+          language={language}
         />
       </div>
     );

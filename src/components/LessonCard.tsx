@@ -1,6 +1,8 @@
 import { Lock, CheckCircle, Star } from "lucide-react";
 import { motion } from "motion/react";
 
+type Language = "KR" | "EN";
+
 interface LessonCardProps {
   title: string;
   level: "초급" | "중급" | "고급";
@@ -10,7 +12,27 @@ interface LessonCardProps {
   maxStars: number;
   gameType: "quiz" | "matching";
   onClick: () => void;
+  language: Language;
 }
+
+const levelText = {
+  KR: {
+    초급: "초급",
+    중급: "중급", 
+    고급: "고급",
+    quiz: "퀴즈",
+    matching: "매칭",
+    duration: "5분 이내 • 5개 문제"
+  },
+  EN: {
+    초급: "Beginner",
+    중급: "Intermediate",
+    고급: "Advanced", 
+    quiz: "Quiz",
+    matching: "Matching",
+    duration: "Under 5 min • 5 questions"
+  }
+};
 
 export function LessonCard({
   title,
@@ -21,6 +43,7 @@ export function LessonCard({
   maxStars,
   gameType,
   onClick,
+  language,
 }: LessonCardProps) {
   const levelColors = {
     초급: "bg-[var(--italian-green-100)] text-[var(--italian-green-800)] border-[var(--italian-green-200)]",
@@ -50,7 +73,7 @@ export function LessonCard({
           <span
             className={`px-4 py-2 rounded-full text-sm font-medium border-2 ${levelColors[level]}`}
           >
-            {level}
+            {levelText[language][level]}
           </span>
           {isCompleted && (
             <CheckCircle className="w-7 h-7 text-[var(--italian-green)] fill-[var(--italian-green)]" />
@@ -73,7 +96,7 @@ export function LessonCard({
         </div>
 
         <div className="text-sm font-medium text-[var(--italian-gray-600)]">
-          5분 이내 • 5개 문제 • {gameType === "quiz" ? "퀴즈" : "매칭"}
+          {levelText[language].duration} • {gameType === "quiz" ? levelText[language].quiz : levelText[language].matching}
         </div>
       </div>
     </motion.div>
