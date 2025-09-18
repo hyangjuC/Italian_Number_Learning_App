@@ -21,6 +21,7 @@ Web Speech API
 ShadCN/UI Components
 
 
+
 🇮🇹 Numeri Italiani – Italian Numbers Learning App(EN)
 
 An Italian numbers learning app designed to make studying fun with gamification elements and a friend system.
